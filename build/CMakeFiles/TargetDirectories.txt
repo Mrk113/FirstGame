@@ -1,0 +1,3 @@
+/Users/mark/Documents/code/projects/project-x/build/CMakeFiles/main.dir
+/Users/mark/Documents/code/projects/project-x/build/CMakeFiles/edit_cache.dir
+/Users/mark/Documents/code/projects/project-x/build/CMakeFiles/rebuild_cache.dir
