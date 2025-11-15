@@ -1,1 +1,0 @@
-/usr/bin/c++  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/main.dir/src/main.cpp.o CMakeFiles/main.dir/src/Game.cpp.o -o main -F/usr/local/.  -Wl,-rpath,/usr/local/. /usr/local/./SDL3.framework/Versions/A/SDL3
