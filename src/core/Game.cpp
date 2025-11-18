@@ -5,7 +5,7 @@ Game::Game() {
     window = SDL_CreateWindow("Game Window", 
         800, 
         600, 
-        SDL_WINDOW_RESIZABLE | SDL_WINDOW_FULLSCREEN
+        SDL_WINDOW_RESIZABLE 
     );
     if (!window) {
         isRunning = false;
@@ -17,6 +17,8 @@ Game::Game() {
         isRunning = false;
         SDL_LogError(SDL_LOG_CATEGORY_ERROR, "Could not create renderer: %s", SDL_GetError());
     }
+
+    isRunning = true;
 }
 
 Game::~Game() {
@@ -29,10 +31,29 @@ Game::~Game() {
     SDL_Quit();
 }
 
+void Game::run() {
+    Uint64 current = SDL_GetPerformanceCounter();
+    Uint64 last = 0;
+    double deltaTime = 0;
+
+    while (isRunning) {
+        last = current;
+        current = SDL_GetPerformanceCounter();
+        deltaTime = (double)((current - last) / (double)SDL_GetPerformanceFrequency());
+
+        handleInput();
+        update(deltaTime);
+        render();
+    }
+}
+
 void Game::handleInput() {
     SDL_Event event;
     while (SDL_PollEvent(&event)) {
         if (event.type == SDL_EVENT_QUIT) {
+            isRunning = false;
+        }
+        if (event.key.key == SDLK_ESCAPE) {
             isRunning = false;
         }
     }
